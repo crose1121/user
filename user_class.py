@@ -8,6 +8,7 @@ class User():
         if amount <= self.wallet_balance:
             self.wallet_balance -= amount
             self.bank_balance += amount
+            return self
         else:
             print("Insufficient Funds")
     
@@ -15,6 +16,7 @@ class User():
         if self.bank_balance >= amount:
             self.bank_balance -= amount
             self.wallet_balance += amount
+            return self
         else:
             print("Insufficient Funds")
 
@@ -25,6 +27,7 @@ class User():
             self.bank_balance -= amount
             other_user.bank_balance += amount
             print("Your money has been transferred")
+            return self
         else:
             print("Insufficient Funds!")
 
@@ -37,22 +40,13 @@ user1 = User('Corey Rose', 4000,2500)
 user2 = User('The Mountain', 2500,1000)
 user3 = User('Eddard Stark', 3500,5000)
 
-user1.make_deposit(1000)
-user1.make_deposit(900)
-user1.make_deposit(500)
-user1.make_withdrawal(200)
+user1.make_deposit(1000).make_deposit(900).make_deposit(500).make_withdrawal(200)
 print(user1)
 
-user2.make_deposit(1000)
-user2.make_deposit(900)
-user2.make_withdrawal(500)
-user2.make_withdrawal(200)
+user2.make_deposit(1000).make_deposit(900).make_withdrawal(500).make_withdrawal(200)
 print(user2)
 
-user3.make_deposit(2000)
-user3.make_withdrawal(3000)
-user3.make_withdrawal(2000)
-user3.make_withdrawal(2000)
+user3.make_deposit(2000).make_withdrawal(3000).make_withdrawal(2000).make_withdrawal(2000)
 print(user3)
 
 user1.transfer_money(user2,500)
